@@ -2,20 +2,21 @@ import os
 import re
 
 
-def get_next_filename(folder_path="./audio/data", base_filename="recording"):
+def get_next_filename(folder_path="./audio/data", base_filename="recording", extension="wav"):
     """
-    Finds the largest number in filenames matching "base_filename_XXX",
+    Finds the largest number in filenames matching "base_filename_XXX.extension",
     increments it by 1, and returns the new filename.
 
     Args:
         folder_path (str): The path to the folder.
         base_filename (str): The base filename (e.g., "file_name").
+        extension (str): The extension (e.g., "wav")
 
     Returns:
-        str: The incremented filename (e.g., "file_name_003").
+        str: The incremented filename (e.g., "file_name_003.wav").
     """
     highest_number = -1
-    pattern = re.compile(rf"{base_filename}_(\d+)")
+    pattern = re.compile(rf"{base_filename}_(\d+).{extension}")
 
     try:
         for filename in os.listdir(folder_path):
@@ -25,7 +26,7 @@ def get_next_filename(folder_path="./audio/data", base_filename="recording"):
                 highest_number = max(highest_number, number)
 
         new_number = highest_number + 1
-        return f"{base_filename}_{new_number: 03d}"
+        return f"{base_filename}_{new_number:03d}.{extension}"
 
     except FileNotFoundError:
-        return f"{base_filename}_000"
+        return f"{base_filename}_000.{extension}"
