@@ -1,8 +1,8 @@
 import os
-from audio.functions import record
-from helper_functions import get_next_filename
+from audio_processing import record
+from utils import get_next_filename
 
-audio_folder = "./audio/data"
+audio_folder = "../data/recordings"
 file_name = get_next_filename(audio_folder)
 file_path = os.path.join(audio_folder, file_name)
 

@@ -1,7 +1,7 @@
 import os
 import pytest
 from unittest.mock import patch
-from helper_functions import get_next_filename
+from app.utils import get_next_filename
 
 
 @pytest.fixture
