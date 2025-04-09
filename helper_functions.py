@@ -2,7 +2,9 @@ import os
 import re
 
 
-def get_next_filename(folder_path="./audio/data", base_filename="recording", extension="wav"):
+def get_next_filename(
+    folder_path="./audio/data", base_filename="recording", extension="wav"
+):
     """
     Finds the largest number in filenames matching "base_filename_XXX.extension",
     increments it by 1, and returns the new filename.
@@ -30,3 +32,7 @@ def get_next_filename(folder_path="./audio/data", base_filename="recording", ext
 
     except FileNotFoundError:
         return f"{base_filename}_000.{extension}"
+
+    except Exception as e:
+        print(f"An Exception occured: {e}")
+        return None
