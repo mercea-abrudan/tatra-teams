@@ -2,4 +2,5 @@
 .pytest_cache/
 .venv/
 __pycache__/
+/app/app.log
 /data
